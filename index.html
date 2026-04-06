@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đặt sân bóng</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">⚽ ĐẶT SÂN BÓNG</div>
+
+<!-- MENU -->
+<div class="menu">
+  <div class="box red" onclick="uudai()">🔥 Ưu đãi</div>
+  <div class="box blue" onclick="datnhanh()">⚡ Đặt nhanh</div>
+  <div class="box green" onclick="giare()">💰 Giá rẻ</div>
+  <div class="box orange" onclick="tatca()">🏟️ Tất cả</div>
+</div>
+
+<!-- SEARCH -->
+<div class="search">
+  <input id="ten" placeholder="Tên sân">
+  <input id="khuvuc" placeholder="Khu vực">
+  <button onclick="tim()">Tìm</button>
+</div>
+
+<!-- LIST -->
+<div class="list" id="list"></div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-box">
+    <h3>Đặt sân</h3>
+    <input placeholder="Tên khách">
+    <input placeholder="SĐT">
+    <input type="date">
+    <input type="time">
+    <button onclick="thanhtoan()">Thanh toán</button>
+    <button onclick="dong()">Đóng</button>
+  </div>
+</div>
+
+<!-- THANH TOÁN -->
+<div id="pay" class="popup">
+  <div class="popup-box">
+    <h3>Thanh toán</h3>
+    <p>Quét mã</p>
+    <img src="images/qr.jpg" width="400">
+    <button onclick="xacnhan()">OK</button>
+  </div>
+</div>
+
+<script>
+
+/* DATA */
+let ds = [
+  {ten:"Sân A", khuvuc:"Thủ Đức", gia:200000, hinh:"san1.webp"},
+  {ten:"Sân B", khuvuc:"Quận 9", gia:150000, hinh:"san2.jpg"},
+  {ten:"Sân C", khuvuc:"Quận 1", gia:300000, hinh:"san3.jpg"},
+  {ten:"Sân D", khuvuc:"Bình Thạnh", gia:180000, hinh:"san4.jpg"},
+  {ten:"Sân E", khuvuc:"Gò Vấp", gia:120000, hinh:"san5.jpg"},
+  {ten:"Sân F", khuvuc:"Phú Nhuận", gia:250000, hinh:"san6.webp"}
+];
+
+/* ELEMENT */
+const popup = document.getElementById("popup");
+const pay = document.getElementById("pay");
+
+/* RENDER */
+function render(list){
+    let html = "";
+    list.forEach(s => {
+        html += `
+        <div class="card">
+            <img src="images/${s.hinh}">
+            <h3>${s.ten}</h3>
+            <p>${s.khuvuc}</p>
+            <p>${Number(s.gia).toLocaleString()} VND</p>
+            <button onclick="mo()">Đặt sân</button>
+        </div>`;
+    });
+    document.getElementById("list").innerHTML = html;
+}
+render(ds);
+
+/* CLICK */
+function mo(){
+    popup.style.display = "flex";
+}
+
+function dong(){
+    popup.style.display = "none";
+}
+
+function thanhtoan(){
+    popup.style.display = "none";
+    pay.style.display = "flex";
+}
+
+function xacnhan(){
+    alert("Thanh toán thành công");
+    pay.style.display = "none";
+}
+
+/* SEARCH */
+function tim(){
+    let t = document.getElementById("ten").value.toLowerCase();
+    let k = document.getElementById("khuvuc").value.toLowerCase();
+
+    let kq = ds.filter(s =>
+        s.ten.toLowerCase().includes(t) &&
+        s.khuvuc.toLowerCase().includes(k)
+    );
+    render(kq);
+}
+
+/* MENU */
+function uudai(){ render(ds.filter(s => s.gia < 200000)); }
+function giare(){ render(ds.filter(s => s.gia < 150000)); }
+function tatca(){ render(ds); }
+function datnhanh(){ alert("Đặt nhanh"); }
+
+</script>
+
+</body>
+</html>

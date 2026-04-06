@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+
+    /* 🔥 BACKGROUND */
+    background: url("images/anh7.jpg") no-repeat center;
+    background-size: cover;
+}
+
+/* HEADER */
+.header {
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.box {
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.red { background: red; }
+.blue { background: blue; }
+.green { background: green; }
+.orange { background: orange; }
+
+/* SEARCH */
+.search {
+    text-align: center;
+    margin: 10px;
+}
+
+.search input {
+    padding: 8px;
+    margin: 5px;
+}
+
+/* LIST */
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
+
+/* CARD */
+.card {
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.7);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.popup-box {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.popup-box input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+}

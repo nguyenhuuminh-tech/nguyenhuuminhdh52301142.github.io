@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title></head>
+<body>
+
+<h2>Đăng nhập Admin</h2>
+
+<input id="user" placeholder="User"><br>
+<input id="pass" placeholder="Pass" type="password"><br>
+
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
+
+  if(u==="admin" && p==="123"){
+    window.location="dashboard.html";
+  }else{
+    alert("Sai tài khoản!");
+  }
+}
+</script>
+
+</body>
+</html>
